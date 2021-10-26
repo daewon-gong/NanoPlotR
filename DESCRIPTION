@@ -1,0 +1,15 @@
+Package: NanoPlotR
+Type: Package
+Title: Nanorepore sequencing data and RNA modification visualization.
+Version: 0.1.0
+Author: Dae-won Gong
+Maintainer: Dae-won Gong <daewon.gong@mail.utoronto.ca>
+Description: Read, analyze and visualize nanopore RNA sequencing data and visualize RNA modification detection result.
+License: MIT + file LICENSE
+Depends: R (>= 3.1.0)
+Encoding: UTF-8
+LazyData: true
+Imports:
+    ggplot2
+RoxygenNote: 7.1.2
+Roxygen: list(markdown = TRUE)
