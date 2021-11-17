@@ -26,10 +26,13 @@ plotCountMatrix(RnaModificationResults, modSites = c("A"), numTopIds = 2)
 }
 \references{
 \enumerate{
+\item Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of
+Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr
 \item Pratanwanich, P. N., Yao, F., Chen, Y., Koh, C. W. Q., Wan, Y. K., Hendra, C., Poon, P., Goh,
 Y. T., Yap, P. M. L., Chooi, J. Y., Chng, W. J., Ng, S. B., Thiery, A., Goh, W. S. S., & Göke, J. (2021).
 Identification of differential RNA modifications from nanopore direct RNA sequencing with xPore.
 Nature Biotechnology,39(11), 1394–1402. https://doi.org/10.1038/s41587-021-00949-w
+\item H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
 }
 }
 \author{

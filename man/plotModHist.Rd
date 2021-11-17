@@ -22,6 +22,8 @@ plotModHist(RnaModificationResults)
 }
 \references{
 \enumerate{
+\item Frank E Harrell Jr (2021). Hsmisc: Harrell Miscellaneous.
+R package version 4.6.0. https://CRAN.R-project.org/package=Hmisc
 \item Pratanwanich, P. N., Yao, F., Chen, Y., Koh, C. W. Q., Wan, Y. K., Hendra, C., Poon, P., Goh,
 Y. T., Yap, P. M. L., Chooi, J. Y., Chng, W. J., Ng, S. B., Thiery, A., Goh, W. S. S., & Göke, J. (2021).
 Identification of differential RNA modifications from nanopore direct RNA sequencing with xPore.

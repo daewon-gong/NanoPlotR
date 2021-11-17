@@ -17,10 +17,16 @@ utils::globalVariables(c("id", ".", "dmr_mean", "kmer",
 #' @author {Dae-won Gong, \email{daewon.gong@mail.utoronto.ca}}
 #'
 #' @references
-#' 1. Pratanwanich, P. N., Yao, F., Chen, Y., Koh, C. W. Q., Wan, Y. K., Hendra, C., Poon, P., Goh,
+#' 1. Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of
+#' Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr
+#'
+#' 2. Pratanwanich, P. N., Yao, F., Chen, Y., Koh, C. W. Q., Wan, Y. K., Hendra, C., Poon, P., Goh,
 #' Y. T., Yap, P. M. L., Chooi, J. Y., Chng, W. J., Ng, S. B., Thiery, A., Goh, W. S. S., & Göke, J. (2021).
 #' Identification of differential RNA modifications from nanopore direct RNA sequencing with xPore.
 #' Nature Biotechnology,39(11), 1394–1402. https://doi.org/10.1038/s41587-021-00949-w
+#'
+#' 3. H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+#'
 #'
 #' @importFrom ggplot2 ggplot aes geom_bar xlab ylab ggtitle theme_classic
 #' @importFrom ggplot2 scale_y_continuous expansion
@@ -75,10 +81,16 @@ plotTopKmers <- function (modResults, numKmers = 10){
 #' @author {Dae-won Gong, \email{daewon.gong@mail.utoronto.ca}}
 #'
 #' @references
-#' 1. Pratanwanich, P. N., Yao, F., Chen, Y., Koh, C. W. Q., Wan, Y. K., Hendra, C., Poon, P., Goh,
+#'
+#' 1. Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of
+#' Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr
+#'
+#' 2. Pratanwanich, P. N., Yao, F., Chen, Y., Koh, C. W. Q., Wan, Y. K., Hendra, C., Poon, P., Goh,
 #' Y. T., Yap, P. M. L., Chooi, J. Y., Chng, W. J., Ng, S. B., Thiery, A., Goh, W. S. S., & Göke, J. (2021).
 #' Identification of differential RNA modifications from nanopore direct RNA sequencing with xPore.
 #' Nature Biotechnology,39(11), 1394–1402. https://doi.org/10.1038/s41587-021-00949-w
+#'
+#' 3. H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
 #'
 #' @importFrom ggplot2 ggplot aes geom_tile geom_text scale_fill_gradient margin
 #' @importFrom ggplot2 scale_x_discrete coord_equal theme_void labs theme element_text
@@ -134,7 +146,10 @@ plotCountMatrix <- function (modResults, modSites = c("A"), numTopIds = 20) {
 #' @author {Dae-won Gong, \email{daewon.gong@mail.utoronto.ca}}
 #'
 #' @references
-#' 1. Pratanwanich, P. N., Yao, F., Chen, Y., Koh, C. W. Q., Wan, Y. K., Hendra, C., Poon, P., Goh,
+#' 1. Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of
+#' Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr
+#'
+#' 2. Pratanwanich, P. N., Yao, F., Chen, Y., Koh, C. W. Q., Wan, Y. K., Hendra, C., Poon, P., Goh,
 #' Y. T., Yap, P. M. L., Chooi, J. Y., Chng, W. J., Ng, S. B., Thiery, A., Goh, W. S. S., & Göke, J. (2021).
 #' Identification of differential RNA modifications from nanopore direct RNA sequencing with xPore.
 #' Nature Biotechnology,39(11), 1394–1402. https://doi.org/10.1038/s41587-021-00949-w
@@ -178,7 +193,11 @@ getTopIds <- function (modResults, numTopIds = 20) {
 #' @author {Dae-won Gong, \email{daewon.gong@mail.utoronto.ca}}
 #'
 #' @references
-#' 1. Pratanwanich, P. N., Yao, F., Chen, Y., Koh, C. W. Q., Wan, Y. K., Hendra, C., Poon, P., Goh,
+#'
+#' 1. Frank E Harrell Jr (2021). Hsmisc: Harrell Miscellaneous.
+#' R package version 4.6.0. https://CRAN.R-project.org/package=Hmisc
+#'
+#' 2. Pratanwanich, P. N., Yao, F., Chen, Y., Koh, C. W. Q., Wan, Y. K., Hendra, C., Poon, P., Goh,
 #' Y. T., Yap, P. M. L., Chooi, J. Y., Chng, W. J., Ng, S. B., Thiery, A., Goh, W. S. S., & Göke, J. (2021).
 #' Identification of differential RNA modifications from nanopore direct RNA sequencing with xPore.
 #' Nature Biotechnology,39(11), 1394–1402. https://doi.org/10.1038/s41587-021-00949-w

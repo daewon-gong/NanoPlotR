@@ -108,6 +108,8 @@ The author of this package is Dae-won Gong.
 For functions **plotCountMatrix**, **plotTopKmers** and **getTopIds** the **dplyr** and **magrittr** packages for data processing. The **ggplot2** package is used for plotting in the **plotCountMatrix** and **plotTopKmers** functions, while the **Hmisc** package is used for plotting in **plotModHist**.
 
 ## References
+Frank E Harrell Jr (2021). Hsmisc: Harrell Miscellaneous. R package version 4.6.0. https://CRAN.R-project.org/package=Hmisc
+
 Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of
 Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr
   

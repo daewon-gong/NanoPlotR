@@ -84,6 +84,8 @@ NanoPlotR::getTopIds(RnaModificationResults, numTopIds = 1)
 
 ## References
 
+Frank E Harrell Jr (2021). Hsmisc: Harrell Miscellaneous. R package version 4.6.0. https://CRAN.R-project.org/package=Hmisc
+
 Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of
 Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr
   
