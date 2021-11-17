@@ -77,8 +77,48 @@ browseVignettes("NanoPlotR")
 ```
 
 An overview of the package is illustrated below:
-![](./inst/extdata/NanoPlotROverview.png) \#\# Contributions The author
-of this package is Dae-won Gong.
+![](./inst/extdata/NanoPlotROverview.png)
+
+The package tree structure follows:
+
+``` r
+- microCompet
+  |- NanoPlotR.Rproj
+  |- DESCRIPTION
+  |- NAMESPACE
+  |- LICENSE
+  |- README
+  |- data
+    |- RnaModificationResults.rda
+  |- inst
+    |- extdata
+      |- NanoPlotROverview.png
+  |- man
+    |- getTopIds.Rd
+    |- plotCountMatrix.Rd
+    |- plotTopKmers.Rd
+    |- plotModHist.Rd
+    |- RnaModificationResults.Rd
+  |- R
+    |- plotModificationResults.R
+    |- data.R
+  |- tests
+    |- testthat.R
+    |- testthat
+      |- test-getTopIdsR
+      |- test-plotCountMatrix.R
+      |- test-plotTopKmers.R
+      |- test-plotModHist.R
+  |- Vignette
+    |- NanoPlotRVignette.Rmd
+    |- countMatrix.png
+    |- kmerFreq.png
+    |- modHist.png
+```
+
+## Contributions
+
+The author of this package is Dae-won Gong.
 
 For functions **plotCountMatrix**, **plotTopKmers** and **getTopIds**
 the **dplyr** and **magrittr** packages for data processing. The
