@@ -6,48 +6,108 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of NanoPlotR is to …
+The purpose of NanoPlotR is to allow visual interpretation of results
+from nanopore sequencing based RNA modification detection tools such as
+xPore (Pratanwanich et al., 2021). NanoPlotR enables fast and convenient
+ploting of RNA modification detection results for
+visualizization/interpretation of the results.
+
+NanoPlotR is unique from other R packages as there does not exist a R
+package that allows fast/convenient plotting of nanopore sequencing
+based RNA modification detection results. The package will allow
+researchers running a nanopore based RNA modification analysis (using
+xPore or etc.) to quickly visualize the results using the available
+plotting functions.
+
+Note that currently NanoPlotR assumes modification results formatted
+according to the xPore (Pratanwanich et al., 2021) output format. Thus,
+the NanoPlotR works best with RNA modification analysis pipelines that
+utilize xPore. Support for other output formats may be included in the
+future. Results from other detection tools must be transformed into the
+xPore output format unless further support for other formats are
+released..
 
 ## Installation
 
 You can install the development version of NanoPlotR like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+require("devtools")
+devtools::install_github("daewon-gong/NanoPlotR", build_vignettes = TRUE)
+library("NanoPlotR")
+
+To run the shinyApp:
+Under construction
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+## Overview
 
 ``` r
-library(NanoPlotR)
-## basic example code
+ls("package:NanoPlotR")
+data(package = "NanoPlotR") # optional
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+There are **4** functions that are available for user access:
+
+**1. plotCountMatrix** allows users to plot a count matrix of top
+transcript/gene ids ranked by differencial modification rates. Users
+have the option to choose which kmers to include from the modSites
+parameter along with how many transcript/gene ids to include from the
+numTopIds parameter. The function will output a ggplot.
+
+**2. plotTopKmers** allows users to plot a bar graph with the top kmers
+ranked by frequency. Users have the option to choose how many top kmers
+to plot through the numKmers parameter. The function will output a
+ggplot.
+
+**3. plotModHist** allows users to plot histograms to show distribution
+of modification rates of all replication/conditions.
+
+**3. getTopIds** allows users to retrieve the top gene/transcript ids
+ranked by differential modification rates. The function outputs a string
+vector of the top gene/transcript ids.
+
+For more details about the functions, please take a look at the vignette
+for this package:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+browseVignettes("NanoPlotR")
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+An overview of the package is illustrated below:
+![](./inst/extdata/NanoPlotROverview.png) \#\# Contributions The author
+of this package is Dae-won Gong.
 
-You can also embed plots, for example:
+For functions **plotCountMatrix**, **plotTopKmers** and **getTopIds**
+the **dplyr** and **magrittr** packages for data processing. The
+**ggplot2** package is used for plotting in the **plotCountMatrix** and
+**plotTopKmers** functions, while the **Hmisc** package is used for
+plotting in **plotModHist**.
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+## References
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021).
+dplyr: A Grammar of Data Manipulation. R package version 1.0.7.
+<https://CRAN.R-project.org/package=dplyr>
+
+H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag
+New York, 2016.
+
+Pratanwanich, P. N., Yao, F., Chen, Y., Koh, C. W. Q., Wan, Y. K.,
+Hendra, C., Poon, P., Goh, Y. T., Yap, P. M. L., Chooi, J. Y., Chng, W.
+J., Ng, S. B., Thiery, A., Goh, W. S. S., & Göke, J. (2021).
+Identification of differential RNA modifications from nanopore direct
+RNA sequencing with xPore. Nature Biotechnology, 39(11), 1394–1402.
+<https://doi.org/10.1038/s41587-021-00949-w>
+
+R Core Team (2019). R: A language and environment for statistical
+computing. *R Foundation for Statistical Computing*, Vienna, Austria.
+URL <https://www.R-project.org/>.
+
+Wickham, H. and Bryan, J. (2019). R Packages (2nd edition). Newton,
+Massachusetts: O’Reilly Media. <https://r-pkgs.org/>
+
+## Acknowledgements
+
+This package was developed as part of an assessment for 2021 BCB410H:
+Applied Bioinformatics, University of Toronto, Toronto, CANADA.

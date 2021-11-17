@@ -33,6 +33,10 @@ plotTopKmers <- function (modResults, numKmers = 10){
     stop("Please input a valid dataframe for modification results")
   }
 
+  if (!"kmer" %in% colnames(modResults)) {
+    stop("No kmer column in modResults. Please check if input satisfies required modResults format.")
+  }
+
   if (!(numKmers %% 1 == 0)) {
     stop("Invalid data type of numKmers. Please input a valid integer.")
   }
@@ -50,7 +54,7 @@ plotTopKmers <- function (modResults, numKmers = 10){
       geom_bar(stat = "identity", width = 0.8, fill = "steelblue") +
       xlab("Kmers") +
       ylab("Frequency") +
-      ggtitle(paste("Freuquency of top", numKmers, "kmers")) +
+      ggtitle(paste("Frequency of top", numKmers, "kmers")) +
       theme_classic() +
       scale_y_continuous(expand = expansion(mult = c(0, .1)))
 }
@@ -143,6 +147,12 @@ getTopIds <- function (modResults, numTopIds = 20) {
   if (!is.data.frame(modResults)) {
     stop("Please input a valid dataframe for modresults")
   }
+
+  if (numTopIds > length(unique(modResults$id))){
+    warning("numTopIds is greater than total number of unique ids. Displaying all Ids instead.")
+    numTopIds <- length(unique(modResults$id))
+  }
+
   #Dynamically get the label for differential modification rate according to xpore output template
   dmr_label <- colnames(modResults)[grepl("diff_mod_rate", colnames(modResults))]
 
@@ -181,5 +191,5 @@ plotModHist <- function (modResults) {
     stop("Please input a valid dataframe for modresults")
   }
   modNames <- colnames(modResults)[grepl("\\<mod_rate", colnames(modResults))]
-  hist.data.frame(modResults[ , modNames])
+  hist.data.frame(modResults[ , modNames], mtitl = "Histograms of Modification Rates")
 }
