@@ -62,7 +62,7 @@ NanoPlotR::plotCountMatrix(RnaModificationResults, modSites = c("A"), numTopIds 
 
 ![](./countMatrix.png)
 
-## 3. plotModHist
+### 3. plotModHist
 
 **plotModHist** plots histograms to show distribution of modification rates of all replication and conditions. 
 
@@ -72,7 +72,7 @@ NanoPlotR::plotModHist(RnaModificationResults)
 
 ![](./modHist.png)
 
-## 4. getTopIds
+### 4. getTopIds
 
 **getTopIds** retrieves the top gene/transcript ids ranked by differential modification rates. The function outputs a string vector of the top gene/transcript ids. Users can specify how many Ids to return through the numTopIds parameter.
 
