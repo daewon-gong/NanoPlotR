@@ -18,11 +18,13 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The purpose of NanoPlotR is to allow visual interpretation of results from nanopore sequencing based RNA modification detection tools such as xPore (Pratanwanich et al., 2021). NanoPlotR enables fast and convenient ploting of RNA modification detection results for visualizization/interpretation of the results.
+The purpose of NanoPlotR is to allow visual interpretation of results from nanopore sequencing based RNA modification detection tools such as xPore (Pratanwanich et al., 2021). NanoPlotR enables fast and convenient plotting of RNA modification detection results for visualization/interpretation of the results.
 
 NanoPlotR is unique from other R packages as there does not exist a R package that allows fast/convenient plotting of nanopore sequencing based RNA modification detection results. The package will allow researchers running a nanopore based RNA modification analysis (using xPore or etc.) to quickly visualize the results using the available plotting functions.
 
-Note that currently NanoPlotR assumes modification results formatted according to the xPore (Pratanwanich et al., 2021) output format. Thus, the NanoPlotR works best with RNA modification analysis pipelines that utilize xPore. Support for other output formats may be included in the future. Results from other detection tools must be transformed into the xPore output format unless further support for other formats are released..
+Note that currently NanoPlotR assumes modification results formatted according to the xPore (Pratanwanich et al., 2021) output format. Thus, the NanoPlotR works best with RNA modification analysis pipelines that utilize xPore. Support for other output formats may be included in the future. Results from other detection tools must be transformed into the xPore output format unless further support for other formats are released.
+
+NanoplotR was developed in R 4.1.0 and on a Mac platform.
 
 ## Installation
 

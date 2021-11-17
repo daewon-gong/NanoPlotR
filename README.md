@@ -9,8 +9,8 @@
 The purpose of NanoPlotR is to allow visual interpretation of results
 from nanopore sequencing based RNA modification detection tools such as
 xPore (Pratanwanich et al., 2021). NanoPlotR enables fast and convenient
-ploting of RNA modification detection results for
-visualizization/interpretation of the results.
+plotting of RNA modification detection results for
+visualization/interpretation of the results.
 
 NanoPlotR is unique from other R packages as there does not exist a R
 package that allows fast/convenient plotting of nanopore sequencing
@@ -25,7 +25,9 @@ the NanoPlotR works best with RNA modification analysis pipelines that
 utilize xPore. Support for other output formats may be included in the
 future. Results from other detection tools must be transformed into the
 xPore output format unless further support for other formats are
-released..
+released.
+
+NanoplotR was developed in R 4.1.0 and on a Mac platform.
 
 ## Installation
 
