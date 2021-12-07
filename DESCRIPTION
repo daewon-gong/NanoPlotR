@@ -1,8 +1,8 @@
 Package: NanoPlotR
 Type: Package
-Title: Nanorepore sequencing data and RNA modification visualization
+Title: Nanopore Sequencing Based RNA Modification Detection Visualization
 Version: 0.1.0
-Author: Dae-won Gong
+Authors@R: person("D", "Gong", email = "daewon.gong@mail.utoronto.ca", role = c("aut", "cre"))
 Maintainer: Dae-won Gong <daewon.gong@mail.utoronto.ca>
 Description: Visualize nanopore sequencing based RNA modification detection results from detection tools such as xPore.
 License: MIT + file LICENSE
@@ -13,7 +13,8 @@ Imports:
     ggplot2,
     dplyr,
     Hmisc,
-    magrittr
+    magrittr,
+    shiny
 RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
