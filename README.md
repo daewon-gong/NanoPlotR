@@ -145,7 +145,7 @@ Identification of differential RNA modifications from nanopore direct
 RNA sequencing with xPore. Nature Biotechnology, 39(11), 1394–1402.
 <https://doi.org/10.1038/s41587-021-00949-w>
 
-R Core Team (2019). R: A language and environment for statistical
+R Core Team (2021). R: A language and environment for statistical
 computing. *R Foundation for Statistical Computing*, Vienna, Austria.
 URL <https://www.R-project.org/>.
 
