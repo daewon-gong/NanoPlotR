@@ -1,0 +1,12 @@
+citHeader("To cite NanoPlotR in publications use:")
+
+citEntry(
+  entry    = "Unpublished",
+  title    = "NanoPlotR: R pacakge for visualization of nanopore based Rna modification detection results",
+  author   = "Dae-won Gong",
+  note     = "Unpublished",
+  year     = "2021",
+  textVersion = paste(
+"Gong, D. (2021) NanoPlotR: R pacakge for visualization of nanopore based Rna modification detection results.   Unpublished. URL https://github.com/daewon-gong/NanoPlotR"
+  )
+)
