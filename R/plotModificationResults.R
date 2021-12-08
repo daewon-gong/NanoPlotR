@@ -124,21 +124,21 @@ plotCountMatrix <- function (modResults, modSites = c("A"), numTopIds = 20) {
   topIds <- getTopIds(modResults, numTopIds)
 
   modResults %>%
-    filter(., id %in% topIds) %>%
-    filter(., substr(kmer, 3, 3) %in% modSites) %>%
-    group_by(id, kmer) %>%
-    tally(., name = "Count") %>%
-    ggplot(., aes(x = id, y = kmer, fill = Count, label = Count)) +
-      geom_tile(aes(width = 0.7, height = 0.7)) +
-      geom_text() +
-      scale_fill_gradient(high = "red2", low = "white") +
-      scale_x_discrete(position = "top") +
-      coord_equal(ratio = 1) +
-      theme_void() +
-      labs(x = "ID", y = "Number of Sites") +
-      theme(axis.text.x=element_text(angle = 90),
-            axis.text.y = element_text(),
-            axis.title.x = element_text(colour = "black",
+    dplyr::filter(., id %in% topIds) %>%
+    dplyr::filter(., substr(kmer, 3, 3) %in% modSites) %>%
+    dplyr::group_by(id, kmer) %>%
+    dplyr::tally(., name = "Count") %>%
+    ggplot2::ggplot(., ggplot2::aes(x = id, y = kmer, fill = Count, label = Count)) +
+      ggplot2::geom_tile(ggplot2::aes(width = 0.7, height = 0.7)) +
+      ggplot2::geom_text() +
+      ggplot2::scale_fill_gradient(high = "red2", low = "white") +
+      ggplot2::scale_x_discrete(position = "top") +
+      ggplot2::coord_equal(ratio = 1) +
+      ggplot2::theme_void() +
+      ggplot2::labs(x = "ID", y = "Number of Sites") +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+            axis.text.y = ggplot2::element_text(),
+            axis.title.x = ggplot2::element_text(colour = "black",
                                         face = "bold",
                                         margin = margin(t = 0, r = 0, b = 10, l = 0)),
             axis.title.y = element_text(colour = "black",
@@ -191,10 +191,10 @@ getTopIds <- function (modResults, numTopIds = 20) {
   dmr_label <- colnames(modResults)[grepl("diff_mod_rate", colnames(modResults))]
 
   topIds <- modResults %>%
-    group_by(id) %>%
-    summarise(dmr_mean = mean(!!as.name(dmr_label))) %>%
-    slice_max(., order_by = dmr_mean, n = numTopIds) %>%
-    pull(id)
+    dplyr::group_by(id) %>%
+    dplyr::summarise(dmr_mean = mean(!!as.name(dmr_label))) %>%
+    dplyr::slice_max(., order_by = dmr_mean, n = numTopIds) %>%
+    dplyr::pull(id)
 
   return(topIds)
 }
@@ -236,7 +236,7 @@ plotModHist <- function (modResults) {
     stop("Please input a valid dataframe for modresults")
   }
   modNames <- colnames(modResults)[grepl("\\<mod_rate", colnames(modResults))]
-  hist.data.frame(modResults[ , modNames], mtitl = "Histograms of Modification Rates")
+  Hmisc::hist.data.frame(modResults[ , modNames], mtitl = "Histograms of Modification Rates")
 }
 
 #[END].
