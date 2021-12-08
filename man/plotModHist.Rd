@@ -2,7 +2,10 @@
 % Please edit documentation in R/plotModificationResults.R
 \name{plotModHist}
 \alias{plotModHist}
-\title{Plot histogram of modification rates.}
+\title{Plot histograms of the modification rates for all replications and conditions.
+The modResults parameter requires a dataframe with modification rate
+comlumns with the following format "mod_rate_<condition>_<replication>",
+Ex. column: "mode_rate_KO_rep1". The function will read all columns with}
 \usage{
 plotModHist(modResults)
 }
@@ -13,7 +16,7 @@ plotModHist(modResults)
 Histograms of all modification rates in 1 panel.
 }
 \description{
-Plot histogram of modification rates.
+Check format of xPore's output format for required modResults format.
 }
 \examples{
 

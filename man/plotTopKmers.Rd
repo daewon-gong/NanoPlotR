@@ -2,7 +2,9 @@
 % Please edit documentation in R/plotModificationResults.R
 \name{plotTopKmers}
 \alias{plotTopKmers}
-\title{Plot frequency bar plot of top n kmers}
+\title{Plot frequency bar plot of top n kmers. The modResults requires a kmer column.
+A ggplot bar plot of the frequencies of the top n kmers is returned.
+The n kmers can be specified through the numKmers parameter which is defaulted to 10.}
 \usage{
 plotTopKmers(modResults, numKmers = 10)
 }
@@ -15,7 +17,9 @@ plotTopKmers(modResults, numKmers = 10)
 a bar plot of the frequencies of the top n kmers
 }
 \description{
-Plot frequency bar plot of top n kmers
+Plot frequency bar plot of top n kmers. The modResults requires a kmer column.
+A ggplot bar plot of the frequencies of the top n kmers is returned.
+The n kmers can be specified through the numKmers parameter which is defaulted to 10.
 }
 \examples{
 

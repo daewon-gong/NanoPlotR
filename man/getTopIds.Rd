@@ -2,7 +2,9 @@
 % Please edit documentation in R/plotModificationResults.R
 \name{getTopIds}
 \alias{getTopIds}
-\title{Get the top transcript/ids ranked by Differential modification rate}
+\title{Get the top transcript/ids ranked by differential modification rate.
+The modResults requires to be a dataframe with format of xPore's output format.
+The number of top Ids to return can be specified by the numTopIds paramter.}
 \usage{
 getTopIds(modResults, numTopIds = 20)
 }
@@ -12,10 +14,12 @@ getTopIds(modResults, numTopIds = 20)
 \item{numTopIds}{Number of Top Ids to return.}
 }
 \value{
-Vector of
+Vector of number of top Ids ranked by differencial modification rate.
 }
 \description{
-Get the top transcript/ids ranked by Differential modification rate
+Get the top transcript/ids ranked by differential modification rate.
+The modResults requires to be a dataframe with format of xPore's output format.
+The number of top Ids to return can be specified by the numTopIds paramter.
 }
 \examples{
 

@@ -17,7 +17,18 @@ plotCountMatrix(modResults, modSites = c("A"), numTopIds = 20)
 a count matrix plot of inputted modSites and top gene/transcript id's ranked by DMR.
 }
 \description{
-Plot count matrix of top gene/transcript Ids of selected modSites.
+The modResults requires to be a dataframe with format of xPore's output format.
+}
+\details{
+The number of top n transcript/ids to display can be specified through the
+numTopIds parameter. The numTopIds paramter is Defaulted to 20
+
+The desired modification sites can be given through the modSites parameter
+which requires a vector of characters specifying a RNA nucleotide. The
+function then plots a count matrix of top gene/transcript Ids of modifications
+sites where the middle kmer is part of vector modSites. Defaulted to c("A").
+
+A ggplot of the count matrix is returned.
 }
 \examples{
 
