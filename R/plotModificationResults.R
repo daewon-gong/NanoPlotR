@@ -2,7 +2,10 @@
 utils::globalVariables(c("id", ".", "dmr_mean", "kmer",
                          "Count", "margin", "freq"))
 
-#' Plot frequency bar plot of top n kmers
+#' Plot frequency bar plot of top n kmers. The modResults requires a kmer column.
+#' A ggplot bar plot of the frequencies of the top n kmers is returned.
+#' The n kmers can be specified through the numKmers parameter which is defaulted to 10.
+#'
 #'
 #' @param modResults RNA modification detection results in a dataframe
 #' @param numKmers Integer value specifying how many top kmers to display
@@ -66,6 +69,19 @@ plotTopKmers <- function (modResults, numKmers = 10){
 }
 
 #' Plot count matrix of top gene/transcript Ids of selected modSites.
+#'
+#' The modResults requires to be a dataframe with format of xPore's output format.
+#'
+#' The number of top n transcript/ids to display can be specified through the
+#' numTopIds parameter. The numTopIds paramter is Defaulted to 20
+#'
+#' The desired modification sites can be given through the modSites parameter
+#' which requires a vector of characters specifying a RNA nucleotide. The
+#' function then plots a count matrix of top gene/transcript Ids of modifications
+#' sites where the middle kmer is part of vector modSites. Defaulted to c("A").
+#'
+#' A ggplot of the count matrix is returned.
+#'
 #'
 #' @param modResults RNA modification detection results in a dataframe.
 #' @param modSites Vector of modification sites that are included in the plot.
@@ -131,13 +147,16 @@ plotCountMatrix <- function (modResults, modSites = c("A"), numTopIds = 20) {
                                         margin = margin(t = 0, r = 20, b = 0, l = 0)))
 }
 
-#' Get the top transcript/ids ranked by Differential modification rate
+#' Get the top transcript/ids ranked by differential modification rate.
+#' The modResults requires to be a dataframe with format of xPore's output format.
+#' The number of top Ids to return can be specified by the numTopIds paramter.
+#'
 #'
 #' @param modResults RNA modification detection results in a dataframe.
 #' @param numTopIds Number of Top Ids to return.
 #'
 #'
-#' @return Vector of
+#' @return Vector of number of top Ids ranked by differencial modification rate.
 #'
 #' @examples
 #'
@@ -180,7 +199,14 @@ getTopIds <- function (modResults, numTopIds = 20) {
   return(topIds)
 }
 
-#' Plot histogram of modification rates.
+#' Plot histograms of the modification rates for all replications and conditions.
+#' The modResults parameter requires a dataframe with modification rate
+#' comlumns with the following format "mod_rate_<condition>_<replication>",
+#' Ex. column: "mode_rate_KO_rep1". The function will read all columns with
+#  this format and plot a histogram for each modification rate columns.
+#'
+#' Check format of xPore's output format for required modResults format.
+#'
 #'
 #' @param modResults RNA modification detection results in a data frame.
 #'
@@ -212,3 +238,5 @@ plotModHist <- function (modResults) {
   modNames <- colnames(modResults)[grepl("\\<mod_rate", colnames(modResults))]
   hist.data.frame(modResults[ , modNames], mtitl = "Histograms of Modification Rates")
 }
+
+#[END].

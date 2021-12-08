@@ -19,6 +19,7 @@
 #'
 #' @export
 #' @importFrom shiny runApp
+#'
 runNanoPlotR <- function() {
   appDir <- system.file("shiny-scripts",
                         package = "NanoPlotR")
