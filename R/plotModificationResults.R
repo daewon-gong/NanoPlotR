@@ -38,27 +38,31 @@ utils::globalVariables(c("id", ".", "dmr_mean", "kmer",
 #' @export
 #'
 plotTopKmers <- function (modResults, numKmers = 10){
+  # Check if inputted modResults is a dataframe.
   if (!is.data.frame(modResults)) {
     stop("Please input a valid dataframe for modification results")
   }
-
+  # Check if modResults has required columns.
   if (!"kmer" %in% colnames(modResults)) {
     stop("No kmer column in modResults. Please check if input satisfies required modResults format.")
   }
-
+  # Check if numKmers is a valid integer.
   if (!(numKmers %% 1 == 0)) {
     stop("Invalid data type of numKmers. Please input a valid integer.")
   }
 
+  # Count the kmers.
   count <- modResults %>% count(kmer, sort = TRUE, name = "freq")
 
+  # Warn users if inputted numKmers is greater than number of kmers present in modResults.
   if (numKmers > nrow(count)){
     warning("numKmers is greater than total number of kmers. Displaying all kmers instead.")
     numKmers <- nrow(count)
   }
-
   count %>%
+    # Slice to only take the top kmers
     slice(1:numKmers) %>%
+    # Plot top kmers bar graph using ggplot2
     ggplot(., aes(x=kmer, y=freq)) +
       geom_bar(stat = "identity", width = 0.8, fill = "steelblue") +
       xlab("Kmers") +
@@ -116,14 +120,16 @@ plotTopKmers <- function (modResults, numKmers = 10){
 #' @export
 #'
 plotCountMatrix <- function (modResults, modSites = c("A"), numTopIds = 20) {
+  # Check if inputted modResults is a dataframe.
   if (!is.data.frame(modResults)) {
     stop("Please input a valid dataframe for modresults")
   }
+  # Check if inputted modResults has all required columns.
   requiredColumns <- c("kmer", "id")
   if (!all(requiredColumns %in% colnames(modResults))) {
     stop("Missing required Columns in modResults. Please check if input has kmer and id columns.")
   }
-
+  # Check if inputted modSites is valid.
   if (!(is.vector(modSites) && is.atomic(modSites))) {
     stop("Invalid modSites input. Please check if modSites is a valid character vector")
   }
@@ -139,7 +145,7 @@ plotCountMatrix <- function (modResults, modSites = c("A"), numTopIds = 20) {
     # Group and tally counts of kmers for each ids.
     dplyr::group_by(id, kmer) %>%
     dplyr::tally(., name = "Count") %>%
-    # Plot countmatrix with the count.
+    # Plot countmatrix with the computed counts using ggplot2.
     ggplot2::ggplot(., ggplot2::aes(x = id, y = kmer, fill = Count, label = Count)) +
       ggplot2::geom_tile(ggplot2::aes(width = 0.7, height = 0.7)) +
       ggplot2::geom_text() +
@@ -190,22 +196,27 @@ plotCountMatrix <- function (modResults, modSites = c("A"), numTopIds = 20) {
 #' @export
 #'
 getTopIds <- function (modResults, numTopIds = 20) {
+  # Check if inputted modResults is a dataframe.
   if (!is.data.frame(modResults)) {
     stop("Please input a valid dataframe for modresults")
   }
-
+  # Warn users if inputted numKmers is greater than number of kmers present in modResults.
   if (numTopIds > length(unique(modResults$id))){
     warning("numTopIds is greater than total number of unique ids. Displaying all Ids instead.")
     numTopIds <- length(unique(modResults$id))
   }
 
-  #Dynamically get the label for differential modification rate according to xpore output template
+  # Dynamically get the label for differential modification rate according to xpore output template
   dmr_label <- colnames(modResults)[grepl("diff_mod_rate", colnames(modResults))]
 
   topIds <- modResults %>%
+    # Group by id to calculate mean by id
     dplyr::group_by(id) %>%
+    # Calculate dmr_mean for each id
     dplyr::summarise(dmr_mean = mean(!!as.name(dmr_label))) %>%
+    # Only take the top n ids specified in numTopIds
     dplyr::slice_max(., order_by = dmr_mean, n = numTopIds) %>%
+    # Take the top ids as a vector.
     dplyr::pull(id)
 
   return(topIds)
@@ -244,10 +255,13 @@ getTopIds <- function (modResults, numTopIds = 20) {
 #' @export
 #'
 plotModHist <- function (modResults) {
+  # Check if inputted modResults is a dataframe.
   if (!is.data.frame(modResults)) {
     stop("Please input a valid dataframe for modresults")
   }
+  # Dynamically extract mod_rate columns.
   modNames <- colnames(modResults)[grepl("\\<mod_rate", colnames(modResults))]
+  # Plot singe or multiple histograms using the Hmisc package.
   Hmisc::hist.data.frame(modResults[ , modNames], mtitl = "Histograms of Modification Rates")
 }
 
