@@ -15,9 +15,8 @@ countMatrixModal <- function(failed = FALSE) {
     numericInput(
       "matrixNumTopIds",
       "Input number of top ids to display:",
-      100,
+      1,
       min = 1,
-      max = 100,
     ),
     # Error handling.
     if (failed) {
@@ -38,9 +37,8 @@ topKmersModal <- function(failed = FALSE) {
     numericInput(
       "numKmers",
       "Input number of top kmers to display:",
-      100,
+      1,
       min = 1,
-      max = 100,
     ),
     # Error handling.
     if (failed) {
