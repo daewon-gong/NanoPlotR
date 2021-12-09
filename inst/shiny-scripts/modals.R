@@ -20,7 +20,7 @@ countMatrixModal <- function(failed = FALSE) {
     ),
     # Error handling.
     if (failed) {
-      div(tags$b("Error", style = "color: red;"))
+      div(tags$b("Please make sure to select atleast one modification site and provide an integer greater than 0.", style = "color: red;"))
     },
     footer = tagList(
       actionButton("matrix_next", "Next"),
@@ -42,7 +42,7 @@ topKmersModal <- function(failed = FALSE) {
     ),
     # Error handling.
     if (failed) {
-      div(tags$b("Error", style = "color: red;"))
+      div(tags$b("Please provide integer greater than 0", style = "color: red;"))
     },
     footer = tagList(
       actionButton("top_kmer_next", "Next"),
