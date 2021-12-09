@@ -90,6 +90,7 @@ The package tree structure follows:
     |- plotTopKmers.Rd
     |- plotModHist.Rd
     |- RnaModificationResults.Rd
+    |- runNanoPlotR.Rd
   |- R
     |- plotModificationResults.R
     |- data.R
