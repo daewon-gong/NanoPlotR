@@ -119,15 +119,27 @@ plotCountMatrix <- function (modResults, modSites = c("A"), numTopIds = 20) {
   if (!is.data.frame(modResults)) {
     stop("Please input a valid dataframe for modresults")
   }
+  requiredColumns <- c("kmer", "id")
+  if (!all(requiredColumns %in% colnames(modResults))) {
+    stop("Missing required Columns in modResults. Please check if input has kmer and id columns.")
+  }
+
+  if (!(is.vector(modSites) && is.atomic(modSites))) {
+    stop("Invalid modSites input. Please check if modSites is a valid character vector")
+  }
 
 # xlabel <- if (geneName == FALSE) "ID" else "Gene"
   topIds <- getTopIds(modResults, numTopIds)
 
   modResults %>%
+    # Filter to get only the topIds.
     dplyr::filter(., id %in% topIds) %>%
+    # Filter to get only the kmers specified by user.
     dplyr::filter(., substr(kmer, 3, 3) %in% modSites) %>%
+    # Group and tally counts of kmers for each ids.
     dplyr::group_by(id, kmer) %>%
     dplyr::tally(., name = "Count") %>%
+    # Plot countmatrix with the count.
     ggplot2::ggplot(., ggplot2::aes(x = id, y = kmer, fill = Count, label = Count)) +
       ggplot2::geom_tile(ggplot2::aes(width = 0.7, height = 0.7)) +
       ggplot2::geom_text() +
