@@ -122,41 +122,54 @@ server <- function(input, output) {
   })
 
   observeEvent(input$top_kmer_next, {
-    # Store user input for numKmers
-    numKmers(input$numKmers)
-    # Dynamically insert tab if user selected topKmers.
-    insertTab(
-      inputId = "main_tab",
-      tab = tabPanel("Top Kmers Bar Plot",
-                     plotOutput("topKmersPlot"))
-    )
-    removeModal()
-    # Render top kmers plot.
-    output$topKmersPlot <- renderPlot({
-      plotTopKmers(modResults(), numKmers())
-    })
-    # If user also selected countMatrix, show the matrix option modal next.
-    if ("countMatrix" %in% plotSelection()) {
-      showModal(countMatrixModal())
+    # Error handling in case of wrong user input
+    if (input$numKmers > 0) {
+      # Store user input for numKmers
+      numKmers(input$numKmers)
+      # Dynamically insert tab if user selected topKmers.
+      insertTab(
+        inputId = "main_tab",
+        tab = tabPanel("Top Kmers Bar Plot",
+                       plotOutput("topKmersPlot"))
+      )
+      # Remove Modal.
+      shiny::removeModal()
+      # Render top kmers plot.
+      output$topKmersPlot <- renderPlot({
+        plotTopKmers(modResults(), numKmers())
+      })
+      # If user also selected countMatrix, show the matrix option modal next.
+      if ("countMatrix" %in% plotSelection()) {
+        shiny::showModal(countMatrixModal())
+      }
+    } else{
+      # Display topKmersModal again with error message.
+      shiny::showModal(topKmersModal(failed = TRUE))
     }
   })
 
   observeEvent(input$matrix_next, {
-    # Store user input options for countMatrix.
-    matrixNumTopIds(input$matrixNumTopIds)
-    matrixModSites(input$matrixModSites)
-    # Dynamically insert tab if user selected countMatrix.
-    insertTab(
-      inputId = "main_tab",
-      tab = tabPanel("Count Matrix",
-                     plotOutput("countMatrixPlot"))
-    )
-    # Render countMatrix plot.
-    output$countMatrixPlot <- renderPlot({
-      plotCountMatrix(modResults(), matrixModSites(), as.integer(matrixNumTopIds()))
-    })
-    removeModal()
-    # No more modals needed, additional modals required when more plots supported.
+    # Error handling in case of wrong user input
+    if (!is.null(input$matrixModSites) && (input$matrixNumTopIds > 0)) {
+      # Store user input options for countMatrix.
+      matrixNumTopIds(input$matrixNumTopIds)
+      matrixModSites(input$matrixModSites)
+      # Dynamically insert tab if user selected countMatrix.
+      insertTab(
+        inputId = "main_tab",
+        tab = tabPanel("Count Matrix",
+                       plotOutput("countMatrixPlot"))
+      )
+      # Render countMatrix plot.
+      output$countMatrixPlot <- renderPlot({
+        plotCountMatrix(modResults(), matrixModSites(), as.integer(matrixNumTopIds()))
+      })
+      # Remove the Modal.
+      shiny::removeModal()
+    } else {
+      # Display countMatrixModal again with error message.
+      shiny::showModal(countMatrixModal(failed = TRUE))
+    }
   })
 }
 
