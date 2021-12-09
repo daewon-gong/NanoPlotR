@@ -1,3 +1,4 @@
+library(shiny)
 # Shiny UI modal components for NanoPlotR
 
 # Modal for user input options for plotting count matrix.

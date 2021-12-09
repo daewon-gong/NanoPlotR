@@ -1,4 +1,5 @@
 source("modals.R")
+library(shiny)
 
 # UI for shiny application
 ui <- fluidPage(
