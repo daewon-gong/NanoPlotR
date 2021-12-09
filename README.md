@@ -37,9 +37,12 @@ You can install the development version of NanoPlotR like so:
 require("devtools")
 devtools::install_github("daewon-gong/NanoPlotR", build_vignettes = TRUE)
 library("NanoPlotR")
+```
 
 To run the shinyApp:
-Under construction
+
+``` r
+runNanoPlotR()
 ```
 
 ## Overview
@@ -93,6 +96,10 @@ The package tree structure follows:
   |- inst
     |- extdata
       |- NanoPlotROverview.png
+    |- CITATION
+    |- shiny-scripts
+      |- app.R
+      |- modals.R
   |- man
     |- getTopIds.Rd
     |- plotCountMatrix.Rd
@@ -102,6 +109,7 @@ The package tree structure follows:
   |- R
     |- plotModificationResults.R
     |- data.R
+    |- runNanoPlotR.R
   |- tests
     |- testthat.R
     |- testthat
